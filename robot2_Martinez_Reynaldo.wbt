@@ -1,0 +1,119 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.6149541544487004 -0.7599101289761951 -0.21063709028959365 5.436240516682673
+  position 0.8977798882443615 1.4509578773277414 1.451247288054277
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+Robot {
+  translation 0 0.15000000000000002 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.1 0.3 0.1
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0 0.19999999999999998 0
+      }
+      device [
+        RotationalMotor {
+          name "servo_motor"
+          maxVelocity 13.1
+          maxTorque 0.2157
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.2 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+            }
+            geometry DEF G_RED_BOX Box {
+              size 0.1 0.1 0.1
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0.05 0.05 0
+              maxStop -1.5
+            }
+            device [
+              RotationalMotor {
+                name "servo_motor2"
+                maxVelocity 13.1
+                maxTorque 0.216
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.19999999999999996 0
+              rotation 0 0 1 0
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.9137254901960784 0.7254901960784313 0.43137254901960786
+                    metalness 0
+                  }
+                  geometry DEF G_BOX Box {
+                    size 0.1 0.30000000000000004 0.1
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0.049999999999999996 0.15 0
+                    maxStop -1
+                  }
+                  device [
+                    RotationalMotor {
+                      name "servo_motor3"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 0.3 0
+                    rotation 0 0 1 0
+                    children [
+                      Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.20392156862745098 0.396078431372549 0.6431372549019608
+                          metalness 0
+                        }
+                        geometry DEF G_BOX2 Box {
+                          size 0.1 0.30000000000000004 0.1
+                        }
+                      }
+                    ]
+                    name "solid(2)"
+                    boundingObject USE G_BOX2
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              name "solid(1)"
+              boundingObject USE G_BOX2
+              physics Physics {
+              }
+            }
+          }
+        ]
+        boundingObject USE G_RED_BOX
+        physics Physics {
+        }
+      }
+    }
+  ]
+  controller "robot2"
+}
